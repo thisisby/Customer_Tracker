@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CustomerService {
 
-    List<Customer> list();
+    List<Customer> getCustomers();
 }

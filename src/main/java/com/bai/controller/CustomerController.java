@@ -15,27 +15,18 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerController {
 
-//    final
-//    CustomerService customerService;
-//
-//    public CustomerController(CustomerService customerService) {
-//        this.customerService = customerService;
-//    }
+    final
+    CustomerService customerService;
 
-    @Autowired
-    private CustomerDao customerDao;
-
-//    @GetMapping()
-//    private String showCustomers(Model model) {
-//        model.addAttribute("customers", customerService.list());
-//        return "index";
-//    }
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
+    }
 
     @GetMapping()
     private String showCustomers(Model model) {
-        List<Customer> customers = customerDao.getCustomers();
+        List<Customer> customers = customerService.getCustomers();
         model.addAttribute("customers", customers);
-        return "index";
+        return "tracker/index";
     }
 
 }

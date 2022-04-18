@@ -23,8 +23,6 @@ public class CustomerDaoImpl implements CustomerDao{
     }
 
 
-
-    @Transactional
     @Override
     public List<Customer> getCustomers() {
         Session session = sessionFactory.getCurrentSession();
@@ -33,15 +31,4 @@ public class CustomerDaoImpl implements CustomerDao{
         return customers;
     }
 
-//    public List<Customer> getCustomers() {
-//        List<Customer> list = null;
-//        try {
-//            list = new ArrayList<Customer>();
-//            Query<Customer> query = sessionFactory.getCurrentSession().createQuery("from Customer");
-//            list = query.getResultList();
-//        } catch (HibernateException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
 }

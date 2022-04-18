@@ -5,6 +5,7 @@ import com.bai.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -16,9 +17,10 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerDao = customerDao;
     }
 
+    @Transactional
     @Override
-    public List<Customer> list() {
-        List<Customer> list = customerDao.getCustomers();
-        return list;
+    public List<Customer> getCustomers() {
+        List<Customer> customers = customerDao.getCustomers();
+        return customers;
     }
 }
