@@ -23,4 +23,11 @@ public class CustomerServiceImpl implements CustomerService {
         List<Customer> customers = customerDao.getCustomers();
         return customers;
     }
+
+    @Transactional
+    @Override
+    public void saveCustomer(Customer customer) {
+
+        customerDao.saveCustomer(customer);
+    }
 }
