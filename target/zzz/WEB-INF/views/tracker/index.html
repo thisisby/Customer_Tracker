@@ -186,8 +186,8 @@
                     <td th:text="${customer.lastName}"> lName</td>
                     <td th:text="${customer.email}"> email</td>
                     <td>
-                        <a href="#" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xe254;</i></a>
-                        <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xe872;</i></a>
+                        <a th:href="@{/customers/showCustomerForm/{id}(id = ${customer.id})}" class="settings" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xe254;</i></a>
+                        <a th:href="@{/customers/deleteCustomer/{id}(id = ${customer.id})}" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xe872;</i></a>
                     </td>
                 </tr>
                 </tbody>
@@ -195,5 +195,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

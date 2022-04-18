@@ -4,12 +4,10 @@ import com.bai.dao.CustomerDao;
 import com.bai.entity.Customer;
 import com.bai.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,5 +45,17 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
+    @GetMapping("/showCustomerForm/{id}")
+    private String updateCustomer(@PathVariable(value = "id") int id, Model model) {
+        Customer customer = customerService.findById(id);
+        model.addAttribute("customer", customer);
+        return "tracker/customer-form";
+    }
+
+    @GetMapping("/deleteCustomer/{id}")
+    private String deleteCustomer(@PathVariable(value = "id") int id) {
+        customerService.deleteCustomer(id);
+        return "redirect:/customers";
+    }
 
 }
